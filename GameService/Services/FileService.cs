@@ -33,7 +33,7 @@ public class FileService : IFileService
 
             var uploadParams = new VideoUploadParams()
             {
-                File = new FileDescription(file.FileName),
+                File = new FileDescription(file.FileName,stream),
                 Folder = "g-store_microservice"
             };
 
@@ -48,6 +48,6 @@ public class FileService : IFileService
 
     public async Task UploadImage()
     {
-        throw new NotImplementedException();
+       
     }
 }
