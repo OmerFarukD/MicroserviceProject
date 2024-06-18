@@ -13,5 +13,9 @@ public class MappingProfiles : Profile
         CreateMap<CategoryUpdateDto, Category>();
         CreateMap<Category, CategoryResponseDto>();
         CreateMap<GameCreateDto, Game>();
+        CreateMap<GameUpdateDto, Game>();
+        CreateMap<Game, GameResponseDto>();
+
+
     }
 }

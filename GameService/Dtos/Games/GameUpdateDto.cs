@@ -1,6 +1,7 @@
 ﻿namespace GameService.Dtos.Games;
 
-public sealed record GameCreateDto(
+public sealed record GameUpdateDto(
+    Guid Id,
     string Name,
     string Author,
     IFormFile File,
@@ -9,4 +10,4 @@ public sealed record GameCreateDto(
     string MinimumSystemRequirement,
     string RecommendedSystemRequirement,
     Guid CategoryId
-    );
+);

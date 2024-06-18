@@ -1,6 +1,8 @@
 using System.Reflection;
 using GameService.Context;
+using GameService.Options;
 using GameService.Repositories;
+using GameService.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IGameRepository,GameRepository>();
+builder.Services.AddScoped<IFileService, FileService>();
+
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
+
 builder.Services.AddDbContext<GameDbContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
